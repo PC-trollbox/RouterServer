@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Router administrator</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<style>
+			* {
+				font-family: 'Segoe UI';
+			}
+			button {
+				background-color: #5865f2;
+				border: none;
+				color: white;
+				border-radius: 23%;
+				text-align: center;
+				height: 5%;
+				position: absolute;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		Logged in as Administrator | <a href="/logout">Log out</a>
+		<iframe name="blankIframe" style="display:none"></iframe>
+		<form action="/changeSSID" target="blankIframe">
+			<b>SSID:</b> <input name="ssid" value="%serverSSID%" required></input>
+			<br>
+			<b>Password:</b> <input name="wpa" required></input>
+			<br>
+			<button>Save settings (Router may reboot)</button>
+		</form>
+		<br>
+		<br>
+		<form action="/stopServer" target="blankIframe">
+			<button>Stop server</button>
+		</form>
+		<br>
+		<br>
+		%HideIfNoToppatServer%
+		<div style="border:double; border-color: yellow;">
+			<h1>RPE router Administration tools</h1>
+			<em>Features that only can do magic with RPE and Toppats.</em>
+			<br>
+			<br>
+			<a href="/manageTF">Manage Toppat Files</a>
+		</div>
+		%EndHideIfNoToppatServer%
+		<div style="bottom:0;right:0;position:fixed;display:none" id="isInternetOK">Internet OK<br>Has 0ms response.</div>
+		<script>
+			async function checkInternet() {
+				var now = Date.now();
+				try {
+					var hasOKResp = await fetch("http://" + location.hostname + "/checkNet");
+					if (hasOKResp.ok) {
+						isInternetOK.style.display = "";
+						isInternetOK.innerHTML = "Internet OK<br>Has " + (Date.now() - now) + "ms response.<br>Loaded in " + location.hostname;
+					} else {
+						document.body.innerHTML = "<h1>Oops!</h1><br><p>The Internet is not OK.</p><p>Router has " + (Date.now() - now) + "ms response.</p><a href=\"/\">Reload if the Internet is actually OK.</a>";
+						return;
+					}
+					setTimeout(checkInternet, 1000);
+				} catch {
+					document.body.innerHTML = "<h1>Oops!</h1><br><p>The Internet is not OK.</p><p>Router has " + (Date.now() - now) + "ms response.</p><a href=\"/\">Reload if the Internet is actually OK.</a>";
+					return;
+				}
+			}
+			checkInternet();
+		</script>
+	</body>
+</html>

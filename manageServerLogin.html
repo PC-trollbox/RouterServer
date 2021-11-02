@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Router login</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<style>
+			* {
+				font-family: 'Segoe UI';
+			}
+			button {
+				background-color: #5865f2;
+				border: none;
+				color: white;
+				border-radius: 23%;
+				text-align: center;
+				height: 5%;
+				position: absolute;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Log into your router to continue.</h1>
+		<form action="/loginAttempt" method="get">
+			<b>Username</b>: <input value="Administrator" disabled></input>
+			<br>
+			<b>Password</b>: <input name="adminPass" type="password"></input>
+			<br>
+			<button>Log in</button>
+		</form>
+		%HideIfNoToppatServer%
+		<br>
+		<br>
+		<hr>
+		<b>OR</b> <em style="color:gray">(RPE Servers Only)</em>
+		<br>
+		<hr>
+		<h1>To access your Toppat files enter your certificate.</h1>
+		<form action="/certCodeAccess" method="get">
+			<b>Username</b>: <input value="<No Data>" disabled></input>
+			<br>
+			<b>Certificate issuer</b>: <input value="Administrator" disabled></input>
+			<br>
+			<b>Code</b>: <input name="certCode" type="password"></input>
+			<br>
+			<button>Log in</button>
+		</form>
+		%EndHideIfNoToppatServer%
+	</body>
+</html>

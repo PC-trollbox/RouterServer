@@ -1,0 +1,20 @@
+{
+	/*
+	This is the config needed for the router.
+	*/
+	
+	/*
+	SSID: Specify your SSID
+	*/
+	"SSID": "ImpostorNetwork", 
+	
+	/*
+	WPA2: Specify your Hotspot password (Not dashboard)
+	*/
+	"WPA2": "Impostorissus!",
+	
+	/*
+	AdminPassword: Specify your administrator password (Used for dashboard, not connection)
+	*/
+	"AdminPassword": "MyAmogusNetworkAdmin"
+}

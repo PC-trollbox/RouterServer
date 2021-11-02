@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Blocked by Administrator</title>
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+		<style>
+			* {
+				font-family: 'Segoe UI';
+			}
+			button {
+				background-color: #5865f2;
+				border: none;
+				color: white;
+				border-radius: 23%;
+				text-align: center;
+				height: 5%;
+				position: absolute;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<center>
+			<h1>Blocked by DNS/Router admin</h1>
+			<p>This site was blocked by the admins.</p>
+			<p id="originURL">Origin URL: [URL]</p>
+			<p id="logEntry">[Log Entry]</p>
+			<p>Thanks.</p>
+			<a href="http://192.168.0.1/">Back to router page</a>
+		</center>
+	</body>
+	<script>
+		originURL.innerHTML = "Origin URL: " + location.origin;
+		var logEntries = {
+		};
+		if (logEntries.hasOwnProperty(location.origin)) {
+			logEntry.innerText = logEntries[location.origin];
+		} else {
+			logEntry.innerText = "No explanation found."
+		}
+	</script>
+</html>
