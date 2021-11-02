@@ -1,0 +1,30 @@
+{
+  "remoteDnsConnectionMode": "udp",
+  "upstreamDnsUdpPort": 53,
+  "localDnsPort": 53,
+  "forgedRequestsTTL": 10,
+  "upstreamDnsTlsPort": 853,
+  "requestsToForge": [
+    {
+      "comment": "Admin of the Router.",
+      "hostName": "myrouteradmin.net",
+      "ip": "192.168.0.1",
+      "port": "80"
+    },
+    {
+      "comment": "Forbid google, it's too sus.",
+      "hostName": "*.googleapis.com",
+      "ip": "0.0.0.0"
+    },
+    {
+      "comment": "Forbid google, it's too sus.",
+      "hostName": "*.google.com",
+      "ip": "0.0.0.0"
+    },
+    {
+      "comment": "Forbid google, it's too sus.",
+      "hostName": "*.gstatic.com",
+      "ip" :"0.0.0.0"
+    }
+  ]
+}
